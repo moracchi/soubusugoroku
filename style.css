@@ -1,0 +1,212 @@
+/* ベーススタイル */
+:root {
+    --main-yellow: #FFC800;
+    --dark-gray: #333333;
+    --light-gray: #F5F5F5;
+    --player1-color: #FF3B30;
+    --player2-color: #007AFF;
+    --player3-color: #34C759;
+}
+
+body {
+    font-family: 'M PLUS Rounded 1c', 'Hiragino Kaku Gothic ProN', sans-serif;
+    background: var(--light-gray);
+    margin: 0;
+    padding: 20px;
+}
+
+/* 画面共通スタイル */
+.screen {
+    display: none;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.screen.visible {
+    display: block;
+}
+
+/* スタート画面 */
+#startScreen h1 {
+    color: var(--main-yellow);
+    text-shadow: 2px 2px var(--dark-gray);
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+#startScreen .menu {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#startScreen .player-select {
+    margin: 1rem 0;
+}
+
+#startScreen .player-select select {
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    border: 2px solid var(--main-yellow);
+    border-radius: 5px;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+#startScreen button {
+    background: var(--main-yellow);
+    color: var(--dark-gray);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: 700;
+}
+
+#startScreen button:hover {
+    transform: scale(1.05);
+}
+
+/* ゲーム画面 */
+.game-header {
+    background: var(--dark-gray);
+    color: white;
+    padding: 1rem;
+    border-radius: 10px 10px 0 0;
+}
+
+.game-board {
+    position: relative;
+    background: white;
+    padding: 2rem;
+    border-radius: 0 0 10px 10px;
+    min-height: 400px;
+}
+
+/* 駅マススタイル */
+#stationsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.station {
+    display: inline-block;
+    width: 120px;
+    height: 70px;
+    background: var(--main-yellow);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.station-number {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 0.8rem;
+}
+
+.station-name {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+.station-furigana {
+    font-size: 0.8rem;
+    margin-top: 2px;
+    font-weight: normal;
+}
+
+/* 現在地表示 */
+.station.player1-current {
+    background: var(--player1-color);
+    color: white;
+    transform: scale(1.05);
+    z-index: 5;
+}
+
+.station.player2-current {
+    background: var(--player2-color);
+    color: white;
+    transform: scale(1.05);
+    z-index: 5;
+}
+
+.station.player3-current {
+    background: var(--player3-color);
+    color: white;
+    transform: scale(1.05);
+    z-index: 5;
+}
+
+/* 複数プレイヤー表示用 */
+.station.multi-players {
+    background: linear-gradient(45deg, var(--player1-color), var(--player2-color), var(--player3-color));
+    color: white;
+    transform: scale(1.05);
+    z-index: 5;
+}
+
+/* コントロールパネル */
+.game-controls {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* サイコロ */
+.dice-container {
+    text-align: center;
+    padding: 1rem;
+}
+
+#diceButton {
+    background: var(--main-yellow);
+    border: none;
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: 700;
+    width: 100%;
+}
+
+#diceButton:hover {
+    transform: scale(1.05);
+}
+
+#diceResult {
+    margin-top: 1rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--dark-gray);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 駅情報パネル */
+#stationInfo {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    min-height: 200px;
+}
+
+#stationInfo h3 {
+    m

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>総武線でGO！すごろくゲーム</title>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- スタート画面 -->
+    <div id="startScreen" class="screen visible">
+        <h1>総武線でGO！</h1>
+        <div class="menu">
+            <div class="player-select">
+                <label>プレイヤー数:</label>
+                <select id="playerCount">
+                    <option value="1">1人</option>
+                    <option value="2">2人</option>
+                    <option value="3">3人</option>
+                </select>
+            </div>
+            <button id="startButton">ゲーム開始</button>
+        </div>
+    </div>
+
+    <!-- ゲーム画面 -->
+    <div id="gameScreen" class="screen">
+        <div class="game-header">
+            <h2>現在のターン: <span id="currentTurn">1</span></h2>
+            <div id="playerStatus"></div>
+        </div>
+        
+        <div class="game-board">
+            <!-- 駅マスはJSで生成 -->
+            <div id="stationsContainer"></div>
+        </div>
+
+        <div class="game-controls">
+            <div class="dice-container">
+                <button id="diceButton">サイコロを振る</button>
+                <div id="diceResult"></div>
+            </div>
+            <div id="stationInfo"></div>
+        </div>
+    </div>
+
+    <!-- 結果画面 -->
+    <div id="resultScreen" class="screen">
+        <h1>🏆 優勝者 🏆</h1>
+        <div id="winnerMessage"></div>
+        <button id="replayButton">もう一度遊ぶ</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
