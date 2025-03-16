@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- 音声ファイル -->
+    <audio id="startSound" src="start.m4a" preload="auto"></audio>
+    <audio id="clearSound" src="clear.m4a" preload="auto"></audio>
+    <audio id="bgmSound" src="music.mp3" loop preload="auto"></audio>
+
+    <!-- BGMコントロール -->
+    <div id="bgmControl">
+        <button id="bgmToggle">BGM ON/OFF</button>
+        <div class="volume-control">
+            <label for="volumeSlider">音量:</label>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+        </div>
+    </div>
+
     <!-- スタート画面 -->
     <div id="startScreen" class="screen visible">
         <h1>総武線でGO！</h1>
@@ -39,7 +53,8 @@
         <div class="game-controls">
             <div class="dice-container">
                 <button id="diceButton">サイコロを振る</button>
-                <div id="diceResult"></div>
+                <div id="diceResult" class="dice-animation"></div>
+                <div id="diceMessage"></div>
             </div>
             <div id="stationInfo"></div>
         </div>

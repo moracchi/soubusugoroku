@@ -132,6 +132,7 @@ body {
     color: white;
     transform: scale(1.05);
     z-index: 5;
+    animation: pulse 1s infinite alternate;
 }
 
 .station.player2-current {
@@ -139,6 +140,7 @@ body {
     color: white;
     transform: scale(1.05);
     z-index: 5;
+    animation: pulse 1s infinite alternate;
 }
 
 .station.player3-current {
@@ -146,6 +148,7 @@ body {
     color: white;
     transform: scale(1.05);
     z-index: 5;
+    animation: pulse 1s infinite alternate;
 }
 
 /* 複数プレイヤー表示用 */
@@ -154,6 +157,14 @@ body {
     color: white;
     transform: scale(1.05);
     z-index: 5;
+    animation: pulse 1s infinite alternate;
+}
+
+/* 千葉駅（ゴール駅）のスタイル */
+.station[data-id="JB-39"] {
+    background: gold;
+    border: 3px solid var(--dark-gray);
+    box-shadow: 0 0 10px gold;
 }
 
 /* コントロールパネル */
@@ -192,10 +203,73 @@ body {
     font-size: 2.5rem;
     font-weight: bold;
     color: var(--dark-gray);
-    height: 60px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* サイコロ演出アニメーション */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+@keyframes blink {
+    0% { opacity: 0.2; }
+    100% { opacity: 1; }
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes jump {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+/* 各サイコロの目に対応する演出 */
+.dice-1 {
+    animation: blink 0.5s 3;
+    color: var(--player1-color);
+}
+
+.dice-2 {
+    animation: pulse 0.4s 4;
+    color: var(--player2-color);
+    font-size: 3rem !important;
+}
+
+.dice-3 {
+    animation: shake 0.3s 5, pulse 0.3s 5;
+    color: var(--player3-color);
+    font-size: 3.5rem !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.dice-4 {
+    animation: jump 0.5s 3, spin 0.5s 3;
+    color: #FF9500;
+    font-size: 4rem !important;
+    text-shadow: 0 0 10px gold;
+}
+
+#diceMessage {
+    height: 30px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: var(--dark-gray);
 }
 
 /* 駅情報パネル */
@@ -209,4 +283,100 @@ body {
 }
 
 #stationInfo h3 {
-    m
+    margin-top: 0;
+    color: var(--dark-gray);
+    border-bottom: 2px solid var(--main-yellow);
+    padding-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#stationInfo h3 small {
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+/* 結果画面 */
+#resultScreen h1 {
+    color: var(--main-yellow);
+    text-shadow: 2px 2px var(--dark-gray);
+    font-weight: 700;
+}
+
+#resultScreen #winnerMessage {
+    font-size: 2rem;
+    margin: 2rem 0;
+}
+
+#resultScreen button {
+    background: var(--main-yellow);
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: 700;
+}
+
+/* プレイヤーステータス */
+.player-status {
+    display: inline-block;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+/* BGMコントロール */
+#bgmControl {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 8px;
+    border-radius: 8px;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#bgmToggle {
+    background: var(--main-yellow);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+.volume-control label {
+    margin-right: 5px;
+}
+
+#volumeSlider {
+    width: 80px;
+}
+
+/* パルスアニメーション */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .game-controls {
+        grid-template-columns: 1fr;
+    }
+}
